@@ -33,10 +33,10 @@ The decoder logic is located in the `Decoder.scala` file. Below is a brief descr
 ### 4. Digit Identification
 *   **`distance(l1: SRL, l2: SRL)`**: Calculates the similarity between two encodings by summing the absolute differences of their relative bar widths.
 *   **`bestMatch`**: Iterates through a set of standard encodings to find the digit with the minimum distance to the input segment.
-*   **`bestLeft / bestRight`**: Specifically identifies digits from the left (L/G patterns) and right (R patterns) halves of the barcode.
+*   **`bestLeft / bestRight`**: Returns the parity and best match for a digit in the left / right group.
 *   **`findLast12Digits`**: Segments the 59-bar sequence (ignoring start, center, and end guards) into 12 individual digits.
-*   **`firstDigit`**: Determines the hidden 13th digit (the first digit) by analyzing the parity pattern of the first six digits.
-*   **`checkDigit`**: Calculates the EAN-13 checksum based on the first 12 identified digits.
+*   **`firstDigit`**: Determines the first digit of the barcode by analyzing the parity pattern of the left group of digits.
+*   **`checkDigit`**: Calculates the EAN-13 checksum (the last digit) based on the first 12 identified digits.
 *   **`verifyCode`**: Validates the complete 13-digit sequence by checking the parity pattern and the control digit.
 *   **`solve`**: The main entry point that takes a run-length encoded row and returns the final barcode string if it is valid.
 
